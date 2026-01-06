@@ -1,0 +1,182 @@
+/**
+* All css setup configuration for daisy, tailwind and any extra import should be here.
+**/
+
+/* Work Sans and Cabin Font */
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import "react-toastify/dist/ReactToastify.css";
+
+@import "tailwindcss";
+
+/* Only apply dark mode when added to html element */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-work-sans: "Work Sans", sans-serif;
+    --font-cabin: "Cabin", sans-serif;
+}
+
+@theme {
+    /**
+    * Branded Colors
+    */
+
+    /* teal */
+    --color-teal-100: #c1e3ed;
+    --color-teal-200: #84c7dc;
+    --color-teal-300: #47abca;
+    --color-teal-400: #098fb8;
+    --color-teal-500: #076b8a;
+    --color-teal-600: #04475c;
+    --color-teal-700: #02242e;
+    --color-teal-800: #01151c;
+    --color-teal-900: #000f14;
+
+    /* ivory */
+    --color-ivory-100: #f3f2ec;
+    --color-ivory-200: #efede5;
+    --color-ivory-300: #ebe8df;
+    --color-ivory-400: #e2ded0;
+    --color-ivory-500: #c0bdb1;
+    --color-ivory-600: #9e9b92;
+    --color-ivory-700: #7c7a72;
+    --color-ivory-800: #5a5953;
+
+    /* gray */
+    --color-gray-100: #cccccc;
+    --color-gray-200: #b3b3b3;
+    --color-gray-300: #999999;
+    --color-gray-400: #808080;
+    --color-gray-500: #666666;
+    --color-gray-600: #4d4d4d;
+    --color-gray-700: #333333;
+    --color-gray-800: #1f1f1f;
+
+    /**
+    * Semantic Colors
+    */
+
+    /* yellow */
+    --color-yellow-200: #fffde5;
+    --color-yellow-300: #fff9b2;
+    --color-yellow-400: #fff266;
+    --color-yellow-500: #ffea00;
+    --color-yellow-600: #e5d200;
+    --color-yellow-700: #ccbb00;
+    --color-yellow-800: #b2a400;
+    --color-yellow-900: #998d00;
+
+    /* red */
+    --color-red-100: #fff0f0;
+    --color-red-200: #fecdcd;
+    --color-red-300: #fc9c9c;
+    --color-red-400: #fa5151;
+    --color-red-500: #e00606;
+    --color-red-600: #c70505;
+    --color-red-700: #ae0505;
+    --color-red-800: #950404;
+    --color-red-900: #7c0303;
+
+    /* green */
+    --color-green-50: #beffbd;
+    --color-green-100: #aaffa8;
+    --color-green-200: #87ff85;
+    --color-green-300: #55ff52;
+    --color-green-400: #0aff05;
+    --color-green-500: #039d00;
+    --color-green-600: #038500;
+    --color-green-700: #026b00;
+    --color-green-800: #025200;
+    --color-green-900: #013800;
+
+    /* orange */
+    --color-orange-200: #fff6d6;
+    --color-orange-300: #ffeba3;
+    --color-orange-400: #ffda57;
+    --color-orange-500: #f0bc00;
+    --color-orange-600: #d6a800;
+    --color-orange-700: #bd9400;
+    --color-orange-800: #a38000;
+    --color-orange-900: #8a6c00;
+
+    /**
+    * Neutral Colors
+    */
+
+    --color-neutral-100: var(--color-gray-100);
+    --color-neutral-200: var(--color-gray-200);
+    --color-neutral-300: var(--color-gray-300);
+    --color-neutral-400: var(--color-gray-400);
+    --color-neutral-500: var(--color-gray-500);
+    --color-neutral-600: var(--color-gray-600);
+    --color-neutral-700: var(--color-gray-700);
+    --color-neutral-800: var(--color-gray-800);
+
+    --color-white: #ffffff;
+    --color-black: #424242;
+}
+
+@theme {
+    /* color */
+    --color-fade: var(--color-neutral-300);
+    --color-fade2: var(--color-neutral-200);
+
+    /* text */
+    --text-xxs: 0.625rem;
+
+    /* breakpoints */
+    --breakpoint-sm: 480px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 976px;
+
+    /* typography responsiveness */
+    --text-fluid-h1: clamp(1.5rem, 4vw, 3rem);
+    --text-fluid-h2: clamp(1.25rem, 3vw, 2.5rem);
+    --text-fluid-h3: clamp(1.125rem, 2.5vw, 2rem);
+    --text-fluid-h4: clamp(1rem, 2vw, 1.5rem);
+    --text-fluid-h5: clamp(0.875rem, 1.5vw, 1.125rem);
+    --text-fluid-h6: clamp(0.75rem, 1vw, 1rem);
+    --text-fluid-p: clamp(0.625rem, 1.5vw, 0.9rem);
+    --text-fluid-span: clamp(0.625rem, 1.5vw, 0.9rem);
+
+    --space-h1: clamp(1rem, 2vw, 2rem);
+    --space-h2: clamp(0.85rem, 1.8vw, 1.75rem);
+    --space-h3: clamp(0.7rem, 1.5vw, 1.5rem);
+    --space-h4: clamp(0.5rem, 1.3vw, 1.25rem);
+    --space-h5: clamp(0.3rem, 1vw, 1rem);
+    --space-h6: clamp(0.25rem, 0.8vw, 0.75rem);
+
+    --space-p: clamp(0.75rem, 1.5vw, 1.25rem);
+    --space-list: clamp(0.75rem, 1.5vw, 1.25rem);
+    --space-block: clamp(1rem, 2vw, 2rem);
+    --space-media: clamp(1rem, 2vw, 2rem);
+    --space-table: clamp(1rem, 2vw, 2rem);
+}
+
+@theme {
+    --animate-fadeIn: fadeIn 0.5s ease-in-out forwards;
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+}
+
+:root {
+    font-family: var(--font-cabin);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    overflow: hidden;
+}

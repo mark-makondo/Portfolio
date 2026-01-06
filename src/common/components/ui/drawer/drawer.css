@@ -1,0 +1,24 @@
+.app-drawer {
+    --drawer-color-base: var(--color-gray-450);
+}
+
+.app-drawer .drawer-side:hover .app-drawer__toggle {
+    display: flex;
+    opacity: 1;
+    transition: opacity 0.3s linear;
+}
+
+.app-drawer__toggle {
+    margin: 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.app-drawer__toggle svg {
+    width: 10px;
+}
+
+.app-drawer .drawer-item--title:not(.menu-active) .drawer-item--icon,
+.app-drawer .drawer-item--title:not(.menu-active) .drawer-item--label {
+    color: var(--drawer-color-base);
+}

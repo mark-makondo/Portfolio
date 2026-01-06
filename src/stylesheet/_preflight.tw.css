@@ -1,0 +1,279 @@
+/* 
+* Any preflight or 3rd party overrides 
+* https://tailwindcss.com/docs/preflight
+* https://tailwindcss.com/docs/adding-custom-styles#adding-base-styles
+*/
+
+@layer base {
+    /* RESET ALL MARGINS & PADDING */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    ul,
+    ol,
+    blockquote,
+    pre,
+    code,
+    table,
+    img,
+    figure,
+    figcaption,
+    hr,
+    iframe,
+    video {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* BASE BODY COLOR */
+    body {
+        @apply text-gray-800 dark:text-gray-200;
+    }
+
+    /* ----------------------------------------------------------
+       TYPOGRAPHY SCALE
+       ---------------------------------------------------------- */
+
+    /* HEADINGS */
+    h1 {
+        @apply text-fluid-h1 font-bold;
+    }
+    h2 {
+        @apply text-fluid-h2 font-semibold;
+    }
+    h3 {
+        @apply text-fluid-h3 font-medium;
+    }
+    h4 {
+        @apply text-fluid-h4 font-medium;
+    }
+    h5 {
+        @apply text-fluid-h5 font-medium;
+    }
+    h6 {
+        @apply text-fluid-h6 font-medium;
+    }
+
+    /* PARAGRAPH */
+    p {
+        @apply text-fluid-p leading-relaxed;
+    }
+
+    span {
+        @apply text-fluid-span leading-relaxed;
+    }
+
+    /* SMALL TEXT */
+    small,
+    figcaption {
+        font-size: clamp(0.75rem, 1vw, 0.875rem);
+        @apply text-gray-600 dark:text-gray-400;
+    }
+
+    /* LEAD TEXT */
+    .lead {
+        font-size: clamp(1.125rem, 2vw, 1.5rem);
+        @apply text-gray-700 dark:text-gray-300 font-light;
+    }
+
+    /* ----------------------------------------------------------
+       LISTS
+       ---------------------------------------------------------- */
+
+    ul,
+    ol {
+        @apply pl-6;
+    }
+
+    ul {
+        list-style-type: disc;
+    }
+    ol {
+        list-style-type: decimal;
+    }
+
+    /* nested lists (indent smoothly) */
+    ul ul,
+    ul ol,
+    ol ul,
+    ol ol {
+        @apply mt-2 pl-6;
+    }
+
+    /* ----------------------------------------------------------
+       BLOCKQUOTES
+       ---------------------------------------------------------- */
+
+    blockquote {
+        @apply border-l-4 border-gray-300 dark:border-gray-700 pl-4 italic;
+        font-size: clamp(1rem, 1.8vw, 1.25rem);
+        color: inherit;
+    }
+
+    /* ----------------------------------------------------------
+       LINKS
+       ---------------------------------------------------------- */
+
+    a {
+        @apply text-blue-600 dark:text-blue-400 underline decoration-1 underline-offset-1;
+        transition: opacity 0.2s;
+    }
+
+    a:hover {
+        @apply opacity-80;
+    }
+
+    /* ----------------------------------------------------------
+       CODE & PRE
+       ---------------------------------------------------------- */
+
+    code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        @apply bg-gray-200 dark:bg-gray-800 px-1 py-0.5 rounded text-sm;
+    }
+
+    pre {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        @apply bg-gray-900 text-gray-100 rounded-xl p-4 overflow-x-auto;
+        font-size: clamp(0.875rem, 1.2vw, 1rem);
+    }
+
+    pre code {
+        background: none;
+        padding: 0;
+    }
+
+    /* ----------------------------------------------------------
+       HR
+       ---------------------------------------------------------- */
+
+    hr {
+        @apply border-none h-px bg-gray-300 dark:bg-gray-700 my-6;
+    }
+
+    /* ----------------------------------------------------------
+       IMAGES
+       ---------------------------------------------------------- */
+
+    img {
+        @apply max-w-full h-auto rounded-xl;
+    }
+
+    /* FIGURES */
+    figure {
+        @apply text-center;
+    }
+
+    figcaption {
+        @apply mt-2 text-sm text-gray-500 dark:text-gray-400;
+    }
+
+    /* ----------------------------------------------------------
+       TABLES
+       ---------------------------------------------------------- */
+
+    table {
+        @apply w-full border-collapse text-left;
+        font-size: clamp(0.875rem, 1vw, 1rem);
+    }
+
+    th {
+        @apply border-b border-gray-300 dark:border-gray-700 py-2 font-semibold;
+    }
+
+    td {
+        @apply border-b border-gray-200 dark:border-gray-800 py-2;
+    }
+
+    /* ----------------------------------------------------------
+       VIDEOS / IFRAMES
+       ---------------------------------------------------------- */
+
+    iframe,
+    video {
+        @apply w-full rounded-xl;
+        aspect-ratio: 16/9;
+    }
+
+    /* ----------------------------------------------------------
+       FLUID SPACING (Option B)
+       ---------------------------------------------------------- */
+
+    /* HEADINGS → next element */
+    h1 + * {
+        margin-top: var(--space-h1);
+    }
+    h2 + * {
+        margin-top: var(--space-h2);
+    }
+    h3 + * {
+        margin-top: var(--space-h3);
+    }
+    h4 + * {
+        margin-top: var(--space-h4);
+    }
+    h5 + * {
+        margin-top: var(--space-h5);
+    }
+    h6 + * {
+        margin-top: var(--space-h6);
+    }
+
+    /* PARAGRAPH → next element */
+    p + * {
+        margin-top: var(--space-p);
+    }
+
+    /* Lists → next */
+    ul + *,
+    ol + * {
+        margin-top: var(--space-list);
+    }
+
+    /* Code blocks, blockquotes, images, tables, videos, etc. → next */
+    blockquote + *,
+    pre + *,
+    img + *,
+    figure + *,
+    iframe + *,
+    video + *,
+    table + * {
+        margin-top: var(--space-block);
+    }
+}
+
+@layer base {
+    /* Google Map Override */
+    .google-map * {
+        border-style: none;
+    }
+
+    /* Page Loader Override */
+    #nprogress .bar {
+        background: var(--color-primary) !important;
+        height: 5px !important;
+    }
+
+    #nprogress .peg {
+        box-shadow: none !important;
+        opacity: none !important;
+        transform: unset !important;
+    }
+}
+
+/* Customize Input */
+@layer base {
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0px 1000px white inset !important; /* match bg */
+        box-shadow: 0 0 0px 1000px white inset !important;
+        -webkit-text-fill-color: inherit !important;
+        transition: background-color 9999s ease-in-out 0s; /* prevents flash */
+    }
+}

@@ -1,0 +1,47 @@
+@plugin "daisyui" {
+    themes: light --default, dark --prefersdark;
+    root: ":root";
+    logs: false;
+}
+
+@plugin "daisyui/theme" {
+    name: "light";
+    default: true;
+    prefersdark: false;
+    color-scheme: "light";
+
+    /* Brand */
+    --color-base-100: var(--color-gray-700);
+    --color-base-200: var(--color-ivory-100);
+    --color-base-300: var(--color-gray-800);
+    --color-base-content: var(--color-black);
+
+    --color-primary: var(--color-teal-300);
+    --color-primary-content: var(--color-teal-600);
+
+    --color-secondary: var(--color-gray-600);
+    --color-secondary-content: var(--color-teal-100);
+
+    /* Neural */
+    --color-neutral: var(--color-black);
+    --color-neutral-content: var(--color-white);
+
+    /* Semantic */
+    --color-info: var(--color-sky-400);
+    --color-info-content: var(--color-sky-950);
+    --color-success: var(--color-green-500);
+    --color-success-content: var(--color-green-300);
+    --color-warning: var(--color-orange-500);
+    --color-warning-content: var(--color-orange-900);
+    --color-error: var(--color-red-500);
+    --color-error-content: var(--color-red-200);
+
+    --radius-selector: 0.5rem;
+    --radius-field: 0.25rem;
+    --radius-box: 0.5rem;
+    --size-selector: 0.25rem;
+    --size-field: 0.25rem;
+    --border: 1px;
+    --depth: 1;
+    --noise: 0;
+}

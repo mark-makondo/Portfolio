@@ -1,0 +1,63 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable",
+      "es2022"
+    ],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    /* 
+    * :Alias 
+    * Make sure to also define the alias in "vite.config.ts". 
+    * "vite.config.ts" doesnt accepts wild card.
+    */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@ui/*": [
+        "src/common/components/ui/*"
+      ],
+      "@shared/*": [
+        "src/common/components/shared/*"
+      ],
+      "@icons/*": [
+        "src/common/components/icons/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@images/*": [
+        "src/assets/images/*"
+      ],
+      "@data/*": [
+        "src/common/data/*"
+      ],
+      "@utilities/*": [
+        "src/common/utilities/*"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ]
+}

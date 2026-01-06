@@ -1,0 +1,11 @@
+/* Framework Configuration */
+@import "./_config.css";
+@import "./_daisy.config.css";
+
+/* Tailwind Layers */
+@import "./_preflight.tw.css"; /* Any preflight or 3rd party overrides (@layer base) */
+@import "./_custom.tw.css"; /* Custom styles for any 3rd party components or existing tailwind utility classes (@layer components) */
+
+/* Features & Pages */
+@import "./layouts/index.css";
+@import "../features/index.css";

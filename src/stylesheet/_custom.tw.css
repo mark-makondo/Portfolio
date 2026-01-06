@@ -1,0 +1,125 @@
+/* 
+* All custom styles for any 3rd party components or existing tailwind utility classes
+*/
+
+@layer utilities {
+    /* Display */
+    .display-sm {
+        @apply text-6xl leading-none font-bold;
+    }
+    .display-md {
+        @apply text-7xl leading-none font-bold;
+    }
+    .display-lg {
+        @apply text-8xl leading-none font-bold;
+    }
+    .display-xl {
+        @apply text-9xl leading-none font-bold;
+    }
+
+    /* Headline */
+    .headline-sm {
+        @apply text-3xl leading-tight font-semibold;
+    }
+    .headline-md {
+        @apply text-4xl leading-tight font-semibold;
+    }
+    .headline-lg {
+        @apply text-5xl leading-tight font-semibold;
+    }
+
+    /* Title */
+    .title-sm {
+        @apply text-lg leading-snug font-medium;
+    }
+    .title-md {
+        @apply text-xl leading-snug font-medium;
+    }
+    .title-lg {
+        @apply text-2xl leading-snug font-medium;
+    }
+
+    /* Body */
+    .body-sm {
+        @apply text-xs leading-normal font-normal;
+    }
+    .body-md {
+        @apply text-sm leading-normal font-normal;
+    }
+    .body-lg {
+        @apply text-base leading-normal font-normal;
+    }
+
+    /* Label */
+    .label-sm {
+        @apply text-xs leading-tight font-medium;
+    }
+    .label-lg {
+        @apply text-sm leading-tight font-medium;
+    }
+}
+
+@layer utilities {
+    .fs-inherit {
+        font-size: inherit;
+    }
+    .bg-inherit {
+        background: inherit;
+    }
+}
+
+/* Override tailwind:menu */
+@utility menu {
+    /* Remove default sublist styling */
+    ul.main-list {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    ul.main-list:before {
+        display: none;
+    }
+    /* Remove default link styling */
+    .link.link-text {
+        @apply no-underline text-inherit hover:no-underline active:no-underline visited:text-inherit;
+    }
+
+    /* Remove btn default spacing */
+    .btn.btn-no-default-spacing {
+        @apply p-0 px-0 py-0 min-w-0 gap-0 leading-none;
+    }
+    .btn.btn-as-menu-item {
+        @apply w-full text-sm px-2 py-1.5 flex items-center gap-2 justify-start rounded-none bg-transparent hover:bg-base-200;
+    }
+    .menu-active {
+        @apply bg-primary text-white;
+        color: var(--color-white) !important;
+    }
+
+    .menu-bottom:before {
+        position: absolute;
+        inset-block-start: calc(0.25rem * 0); /* top offset */
+        inset-inline-start: calc(0.25rem * 3); /* left offset */
+        right: calc(0.25rem * 3); /* instead of bottom, use right to stretch horizontally */
+        background-color: var(--color-base-content);
+        opacity: 10%;
+        height: var(--border); /* use height instead of width */
+        content: "";
+    }
+
+    .menu-top {
+        overflow-y: auto;
+        flex: 1 1 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        overflow-x: hidden;
+        flex-wrap: nowrap;
+    }
+
+    /* Remove background when holding left click */
+    li > *:active,
+    li > a:active {
+        background-color: transparent !important;
+    }
+}
