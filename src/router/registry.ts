@@ -5,7 +5,10 @@ import { FlattenedTypes } from "@/types/common.types";
  */
 export const ROUTE_PATHS = {
     NOT_FOUND: "*",
-    HOME: "/"
+    HOME: "/",
+    PROJECTS: "/projects",
+    CONTACT_ME: "/contact-me",
+    TESTIMONIALS: "/testimonials"
 } as const;
 
 export type RoutePathsType = FlattenedTypes<typeof ROUTE_PATHS>;
