@@ -6,10 +6,10 @@ const NotFound404Page: React.FC = () => {
     const handleGoHome = (): void | Promise<void> => navigate("/");
 
     return (
-        <div className="min-h-screen flex items-center justify-center relative bg-blue-20">
-            <div className="absolute inset-0 bg-contain bg-center bg-no-repeat" style={{ backgroundImage: `url('/images/404.webp')` }} />
-
-            <div className="absolute bottom-[5%] left-1/2 transform -translate-x-1/2">
+        <div className="min-h-screen flex items-center justify-center">
+            <div className="flex flex-col items-center justify-center gap-1">
+                <div className="display-xl font-work-sans">404</div>
+                <p className="title-lg text-fade font-work-sans">Oops, This Page Not Found!</p>
                 <button onClick={handleGoHome} className="btn btn-primary gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path

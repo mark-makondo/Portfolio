@@ -3,14 +3,9 @@ import { FallbackProps, ErrorBoundary as ReactErrorBoundary } from "react-error-
 const ErrorFallback: React.FC<FallbackProps> = ({ resetErrorBoundary }) => {
     return (
         <div className="min-h-screen flex items-center justify-center bg-base-200 relative">
-            <div
-                className="absolute inset-0 bg-contain bg-center bg-no-repeat"
-                style={{
-                    backgroundImage: `url('/images/404.webp')`
-                }}
-            />
-
-            <div className="absolute bottom-[5%] left-1/2 transform -translate-x-1/2">
+            <div className="flex flex-col items-center justify-center gap-1">
+                <div className="display-xl font-work-sans">404</div>
+                <p className="title-lg text-fade font-work-sans">Oops, Something went wrong!</p>
                 <button onClick={resetErrorBoundary} className="btn btn-primary gap-2">
                     Refresh
                 </button>
@@ -25,13 +20,7 @@ interface Props {
 
 export const ErrorBoundary: React.FC<Props> = ({ children }) => {
     return (
-        <ReactErrorBoundary
-            FallbackComponent={ErrorFallback}
-            onReset={() => {
-                // optional: reset app state or reload page
-                window.location.reload();
-            }}
-        >
+        <ReactErrorBoundary FallbackComponent={ErrorFallback} onReset={() => window.location.reload()}>
             {children}
         </ReactErrorBoundary>
     );
