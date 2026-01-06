@@ -3,25 +3,16 @@
 interface ImportMetaEnv {
     VITE_APP_SERVER_URI: string;
     VITE_APP_NAME: string;
-    VITE_APP_COMPANY_NAME: string;
-    VITE_APP_SUPPORT_EMAIL: string;
-    VITE_APP_GRT_COMPANY_URI: string;
-    VITE_APP_PRIVACY_POLICY: string;
-    VITE_APP_TERMS_CONDITIONS: string;
-    VITE_APP_LABOR_LAW: string;
 
-    // Numeric values (note: all env vars are strings at runtime)
-    VITE_APP_SUBSCRIPTION_TIME_REMAINING_WARNING: string;
-    VITE_APP_FILE_EXPIRY_TIME_REMAINING_WARNING: string;
-    VITE_APP_BANNER_IDLE_INTERVAL: string;
-    VITE_APP_BANNER_PLAY_INTERVAL: string;
-    VITE_APP_MOBILE_PUSH_NOTIF_COOLDOWN: string;
-    VITE_APP_DAILY_LOGIN_ACTIVITY_COOLDOWN: string;
-    VITE_APP_INC_STATUS_WAITING_PERIOD: string;
-
-    // API keys
+    // Socials
     VITE_APP_GOOGLE_API_KEY: string;
     VITE_APP_CRYPTO_SECRET_KEY: string;
+    VITE_APP_GITHUB: string;
+    VITE_APP_LINKEDIN: string;
+    VITE_APP_EMAIL: string;
+    VITE_APP_PHONE_QA: string;
+    VITE_APP_PHONE_PH: string;
+    VITE_APP_RESUME: string;
 }
 
 interface ImportMeta {

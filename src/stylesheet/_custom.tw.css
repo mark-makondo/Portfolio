@@ -133,3 +133,24 @@
         @apply bg-base-300 text-gray-300;
     }
 }
+
+@layer components {
+    .navbar {
+        @apply bg-base-300 text-neutral-black-content;
+    }
+
+    .navbar.navbar--home {
+        @apply bg-base-200 text-neutral-white-content;
+    }
+
+    .navbar .menu li > a.active,
+    .navbar .menu-active {
+        all: unset;
+        @apply bg-transparent! text-secondary-100! shadow-none! rounded-none! font-semibold flex items-center px-1 py-0.5;
+    }
+
+    .navbar.navbar--home .menu li > a.active,
+    .navbar.navbar--home .menu-active {
+        @apply text-primary-content!;
+    }
+}
