@@ -34,7 +34,7 @@ const Socials: React.FC<{ min?: boolean }> = ({ min = false }) => {
                         href={`mailto:${appConfig.socials.email}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={clsx("label-sm", isHome ? "text-primary-600" : "text-neutral-black-content")}
+                        className={clsx("text-sm", isHome ? "text-primary-600" : "text-neutral-black-content")}
                     >
                         {appConfig.socials.email}
                     </a>
@@ -45,7 +45,7 @@ const Socials: React.FC<{ min?: boolean }> = ({ min = false }) => {
                 href={appConfig.socials.resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={clsx("label-sm", isHome ? "text-primary-600" : "text-neutral-black-content")}
+                className={clsx("text-sm", isHome ? "text-primary-600" : "text-neutral-black-content")}
             >
                 View/Download Resume
             </a>

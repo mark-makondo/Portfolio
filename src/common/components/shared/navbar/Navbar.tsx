@@ -23,7 +23,7 @@ const createLink = ({ pathname, location, label, Icon, compact = false }: LinkTy
         <li>
             <RouteLink
                 path={pathname}
-                className={clsx("link-text p-2", RouteService.isCurrentPathActive(location, { pathname }) ? "menu-active" : "")}
+                className={clsx("link-text p-2 text-sm!", RouteService.isCurrentPathActive(location, { pathname }) ? "menu-active" : "")}
             >
                 {compact ? <Icon /> : label}
             </RouteLink>
