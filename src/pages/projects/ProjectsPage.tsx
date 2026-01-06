@@ -1,5 +1,5 @@
 const ProjectsPage: React.FC = () => {
-    return <div className="page-projects bg-base-200 h-screen flex justify-center items-center">ProjectsPage</div>;
+    return <div className="page page--alternative page-projects">ProjectsPage</div>;
 };
 
 export default ProjectsPage;

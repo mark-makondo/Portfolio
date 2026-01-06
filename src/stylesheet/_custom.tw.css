@@ -123,3 +123,13 @@
         background-color: transparent !important;
     }
 }
+
+@layer components {
+    .page {
+        @apply bg-base-200 text-gray-600 h-screen flex justify-center items-center;
+    }
+
+    .page.page--alternative {
+        @apply bg-base-300 text-gray-300;
+    }
+}

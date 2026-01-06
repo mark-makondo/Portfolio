@@ -1,5 +1,5 @@
 const ContactPage: React.FC = () => {
-    return <div className="page-contact bg-base-200 h-screen flex justify-center items-center">ContactPage</div>;
+    return <div className="page page-contact">ContactPage</div>;
 };
 
 export default ContactPage;

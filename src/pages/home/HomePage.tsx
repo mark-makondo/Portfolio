@@ -1,5 +1,5 @@
 const Home: React.FC = () => {
-    return <div className="page-home bg-base-200 h-screen flex justify-center items-center">Home</div>;
+    return <div className="page page-home">Home</div>;
 };
 
 export default Home;
