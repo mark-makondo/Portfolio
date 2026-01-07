@@ -33,11 +33,12 @@ const createLink = ({ pathname, location, label, Icon, compact = false }: LinkTy
 };
 
 const NavMenus: React.FC<{ compact?: boolean }> = ({ compact = false }) => {
+    const isHome = useIsHomePath();
     return (
         <ul className="menu menu-horizontal px-1 py-0 h-full">
             {menus.map((menuItem, i) => (
                 <React.Fragment key={menuItem.pathname}>
-                    {i !== 0 && <Divider className="mx-1 py-1.5" horizontal />}
+                    {i !== 0 && <Divider className="mx-1 py-1.5" secondary={!isHome} horizontal />}
                     {createLink({
                         pathname: menuItem.pathname,
                         location,

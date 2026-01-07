@@ -26,6 +26,9 @@ const PublicLayout: React.FC<PublicLayoutProps> = () => {
                     </div>
                     <Outlet />
                 </div>
+                {!isHome && (
+                    <footer className="text-neutral-black-content label-sm text-center mb-4">© 2026 Mark Makondo. All rights reserved.</footer>
+                )}
             </div>
         </div>
     );
