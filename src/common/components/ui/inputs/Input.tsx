@@ -1,62 +1,71 @@
-import React, { useMemo } from "react";
+import React, { DetailedHTMLProps, InputHTMLAttributes, TextareaHTMLAttributes } from "react";
+import clsx from "clsx";
 import PasswordIcon from "@icons/PasswordIcon";
 import UserIcon from "@icons/UserIcon";
 
 const MAX_STR_LEN = 80;
+const MAX_LONG_STR_LEN = 1000;
 
-const Input: React.FC<InputProps> = ({ beforeIcon, ...rest }) => {
-    const className = useMemo(() => {
-        let str = "floating-label input input-sm input-border flex max-w-none items-center gap-2 w-full outline-primary";
-        if (rest.className) str += ` ${rest.className}`;
-        return str;
-    }, [rest.className]);
+type InputAttributes = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+type TextareaAttributes = DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>;
 
-    return (
-        <label className={className}>
-            {rest.placeholder && <span>{rest.placeholder}</span>}
-            {beforeIcon}
-            <input name="input" type="text" className="grow" {...rest}></input>
-        </label>
-    );
+type InputProps = InputAttributes & {
+    beforeIcon?: React.ReactNode;
+    label?: string;
 };
 
-export default Input;
+type TextareaProps = TextareaAttributes & {
+    beforeIcon?: React.ReactNode;
+    label?: string;
+};
 
-export const InputToggle: React.FC<InputProps> = (props) => {
-    const className = useMemo(() => {
-        let str = "toggle toggle-sm";
-        if (props.className) str += ` ${props.className}`;
-        return str;
-    }, [props.className]);
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(({ beforeIcon, placeholder, className, ...props }, ref) => (
+    <label className={clsx("floating-label input input-sm w-full", className)}>
+        <input {...props} ref={ref} placeholder={placeholder || " "} className="grow" maxLength={MAX_STR_LEN} />
+        <span>{placeholder}</span>
+        {beforeIcon}
+    </label>
+));
 
+export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(({ beforeIcon, placeholder, className, ...props }, ref) => (
+    <label className={clsx("floating-label textarea w-full", className)}>
+        <textarea {...props} ref={ref} placeholder={placeholder || " "} className="grow resize-none" maxLength={MAX_LONG_STR_LEN} />
+        <span>{placeholder}</span>
+        {beforeIcon}
+    </label>
+));
+
+export const InputToggle = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     return (
         <label className="label">
-            <input {...props} type="checkbox" className={className} />
+            <input {...props} ref={ref} type="checkbox" className={clsx("toggle toggle-sm", props.className)} />
             <span className="text-xs">{props.label}</span>
         </label>
     );
-};
+});
 
-export const InputText: React.FC<InputProps> = (props) => {
-    return <Input {...props} type="text" autoComplete="text" maxLength={MAX_STR_LEN} />;
-};
+export const InputText = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+    return <Input {...props} ref={ref} type="text" autoComplete="text" maxLength={MAX_STR_LEN} />;
+});
 
-export const InputUsername: React.FC<InputProps> = (props) => {
+export const InputUsername = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     return (
         <Input
             {...props}
+            ref={ref}
             beforeIcon={<UserIcon className="h-4 w-4 opacity-70" />}
             placeholder="Username"
             autoComplete="username"
             maxLength={MAX_STR_LEN}
         />
     );
-};
+});
 
-export const InputEmail: React.FC<InputProps> = (props) => {
+export const InputEmail = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     return (
         <Input
             {...props}
+            ref={ref}
             type="email"
             beforeIcon={<UserIcon className="h-4 w-4 opacity-70" />}
             placeholder="Email"
@@ -64,31 +73,17 @@ export const InputEmail: React.FC<InputProps> = (props) => {
             maxLength={MAX_STR_LEN}
         />
     );
-};
+});
 
-export const InputPassword: React.FC<InputProps> = (props) => {
+export const InputPassword = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     return (
         <Input
             {...props}
+            ref={ref}
             type="password"
             beforeIcon={<PasswordIcon className="h-4 w-4 opacity-70" />}
             placeholder="Password"
             autoComplete="currentPassword"
         />
     );
-};
-
-interface InputProps {
-    beforeIcon?: React.ReactNode;
-    placeholder?: string;
-    className?: string;
-    label?: string;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    value?: string;
-    type?: string;
-    autoComplete?: string;
-    name?: string;
-    required?: boolean;
-    maxLength?: number;
-    minLength?: number;
-}
+});
