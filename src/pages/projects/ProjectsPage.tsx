@@ -1,5 +1,11 @@
+import PageContainer from "@/common/components/shared/container/PageContainer";
+
 const ProjectsPage: React.FC = () => {
-    return <div className="page page--alternative page-projects">ProjectsPage</div>;
+    return (
+        <PageContainer className="page-projects" subtitle="My Works" title="Featured Projects" alternative>
+            ProjectsPage
+        </PageContainer>
+    );
 };
 
 export default ProjectsPage;
