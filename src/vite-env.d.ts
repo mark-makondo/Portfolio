@@ -4,7 +4,10 @@ interface ImportMetaEnv {
     VITE_APP_SERVER_URI: string;
     VITE_APP_NAME: string;
 
+    VITE_APP_WORK_STATUS: number;
+
     // Socials
+    VITE_APP_LOCATION: string;
     VITE_APP_GOOGLE_API_KEY: string;
     VITE_APP_CRYPTO_SECRET_KEY: string;
     VITE_APP_GITHUB: string;

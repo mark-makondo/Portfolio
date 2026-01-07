@@ -1,5 +1,9 @@
+import { getEnvNumber } from "./common/utilities/helper";
+
 export default {
     appName: import.meta.env.VITE_APP_NAME,
+    location: import.meta.env.VITE_APP_LOCATION,
+    isAvailableForWork: getEnvNumber("VITE_APP_WORK_STATUS") === 1,
     url: {
         server: import.meta.env.VITE_APP_SERVER_URI
     },
