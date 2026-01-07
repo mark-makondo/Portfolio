@@ -142,6 +142,10 @@
     .page.page--alternative {
         @apply bg-base-300 text-gray-300;
     }
+
+    .page__title {
+        @apply font-work-sans text-center;
+    }
 }
 
 @layer components {
