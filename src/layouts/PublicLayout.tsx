@@ -11,12 +11,12 @@ const PublicLayout: React.FC<PublicLayoutProps> = () => {
     const isHome = useIsHomePath();
     return (
         <div className={clsx("public-layout public-layout--company w-full h-screen", isHome ? "bg-base-200" : "bg-base-300")}>
-            <div className="container m-auto flex flex-col h-full">
+            <div className="container m-auto flex flex-col h-full relative">
                 <Navbar />
-                <div className="flex gap-1 grow shrink basis-0 min-h-0 py-4">
+                <div className="flex gap-1 grow shrink basis-0 min-h-0 py-4 pb-8 pt-12">
                     <div
                         className={clsx(
-                            "layout-line flex flex-col h-full items-center gap-4 ml-4",
+                            "layout-line flex flex-col h-full items-center gap-4",
                             isHome ? "text-neutral-white-content" : "text-neutral-black-content"
                         )}
                     >

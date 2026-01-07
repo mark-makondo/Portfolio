@@ -5,10 +5,11 @@ import RouteLink from "@ui/navigation/RouteLink";
 import RouteService from "@/services/Route.service";
 import { LocationType } from "@/types/common.types";
 import menus from "./menus";
-import Socials from "../../ui/socials/Socials";
+import Socials from "../socials/Socials";
 import { useIsHomePath } from "@/common/hooks/useIsHome";
 import { useSelector } from "react-redux";
 import { selectViewport } from "@/app/app.slice";
+import Divider from "../../ui/divider/Divider";
 
 type LinkType = {
     pathname: string;
@@ -33,9 +34,10 @@ const createLink = ({ pathname, location, label, Icon, compact = false }: LinkTy
 
 const NavMenus: React.FC<{ compact?: boolean }> = ({ compact = false }) => {
     return (
-        <ul className="menu menu-horizontal px-1 py-0">
-            {menus.map((menuItem) => (
+        <ul className="menu menu-horizontal px-1 py-0 h-full">
+            {menus.map((menuItem, i) => (
                 <React.Fragment key={menuItem.pathname}>
+                    {i !== 0 && <Divider className="mx-1 py-1.5" horizontal />}
                     {createLink({
                         pathname: menuItem.pathname,
                         location,
@@ -55,7 +57,7 @@ const Navbar = () => {
     const isSmallScreen = viewport?.screen === "sm";
 
     return (
-        <div className={clsx("navbar pt-5 px-7 h-15", isHome ? "navbar--home" : "")}>
+        <div className={clsx("navbar pt-5 h-15", isHome ? "navbar--home" : "")}>
             <div className="navbar-inner flex justify-between items-center w-full h-full">
                 <div className="navbar-left flex items-center gap-4 h-full">
                     <div className="navbar-logo">
@@ -63,7 +65,7 @@ const Navbar = () => {
                     </div>
 
                     {!isSmallScreen && (
-                        <div className="navbar-menu">
+                        <div className="navbar-menu h-full">
                             <NavMenus />
                         </div>
                     )}
