@@ -40,22 +40,22 @@
 
     /* HEADINGS */
     h1 {
-        @apply text-fluid-h1 font-bold;
+        @apply text-fluid-h1 font-bold leading-none;
     }
     h2 {
-        @apply text-fluid-h2 font-semibold;
+        @apply text-fluid-h2 font-semibold leading-none;
     }
     h3 {
-        @apply text-fluid-h3 font-medium;
+        @apply text-fluid-h3 font-medium leading-none;
     }
     h4 {
-        @apply text-fluid-h4 font-medium;
+        @apply text-fluid-h4 font-medium leading-none;
     }
     h5 {
-        @apply text-fluid-h5 font-medium;
+        @apply text-fluid-h5 font-medium leading-none;
     }
     h6 {
-        @apply text-fluid-h6 font-medium;
+        @apply text-fluid-h6 font-medium leading-none;
     }
 
     /* PARAGRAPH */

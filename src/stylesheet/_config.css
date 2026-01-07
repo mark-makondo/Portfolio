@@ -148,16 +148,24 @@
     --breakpoint-sm: 480px;
     --breakpoint-md: 768px;
     --breakpoint-lg: 976px;
+    --breakpoint-xlg: 80.25em; /* 1284px
 
     /* typography responsiveness */
-    --text-fluid-h1: clamp(1.5rem, 4vw, 3rem);
-    --text-fluid-h2: clamp(1.25rem, 3vw, 2.5rem);
-    --text-fluid-h3: clamp(1.125rem, 2.5vw, 2rem);
-    --text-fluid-h4: clamp(1rem, 2vw, 1.5rem);
-    --text-fluid-h5: clamp(0.875rem, 1.5vw, 1.125rem);
-    --text-fluid-h6: clamp(0.75rem, 1vw, 1rem);
-    --text-fluid-p: clamp(0.625rem, 1.5vw, 0.9rem);
-    --text-fluid-span: clamp(0.625rem, 1.5vw, 0.9rem);
+
+    /* H1: Starts at 2.5rem on mobile, scales up to a massive 5rem on desktop */
+    --text-fluid-h1: clamp(2.5rem, 8vw, 5rem);
+    /* H2: Clear hierarchy below H1 */
+    --text-fluid-h2: clamp(2rem, 6vw, 3.75rem);
+    /* H3: Great for section titles */
+    --text-fluid-h3: clamp(1.75rem, 4vw, 2.75rem);
+    /* H4: Robust but not overwhelming */
+    --text-fluid-h4: clamp(1.5rem, 3vw, 2rem);
+    /* H5 & H6: Now clearly larger than body text */
+    --text-fluid-h5: clamp(1.25rem, 2vw, 1.5rem);
+    --text-fluid-h6: clamp(1.1rem, 1.5vw, 1.25rem);
+    /* Paragraph & Span: Bumped to standard readable sizes (16px - 18px) */
+    --text-fluid-p: clamp(1rem, 1.2vw, 1.125rem);
+    --text-fluid-span: clamp(1rem, 1.2vw, 1.125rem);
 
     --space-h1: clamp(1rem, 2vw, 2rem);
     --space-h2: clamp(0.85rem, 1.8vw, 1.75rem);

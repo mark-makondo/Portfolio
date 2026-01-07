@@ -125,6 +125,16 @@
 }
 
 @layer components {
+    .badge.badge--available {
+        @apply bg-primary-100! text-primary-600! font-semibold border-primary-100!;
+    }
+
+    .badge.badge--unavailable {
+        @apply bg-red-200! text-red-600! font-semibold border-red-100!;
+    }
+}
+
+@layer components {
     .page {
         @apply bg-base-200 text-gray-600 h-screen flex justify-center items-center;
     }
@@ -151,6 +161,6 @@
 
     .navbar.navbar--home .menu li > a.active,
     .navbar.navbar--home .menu-active {
-        @apply text-primary-content!;
+        @apply text-primary!;
     }
 }

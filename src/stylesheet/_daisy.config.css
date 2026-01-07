@@ -16,8 +16,8 @@
     --color-base-300: var(--color-gray-800);
     --color-base-content: var(--color-black);
 
-    --color-primary: var(--color-teal-300);
-    --color-primary-content: var(--color-teal-600);
+    --color-primary: var(--color-teal-500);
+    --color-primary-content: var(--color-teal-100);
 
     --color-secondary: var(--color-gray-600);
     --color-secondary-content: var(--color-teal-100);
