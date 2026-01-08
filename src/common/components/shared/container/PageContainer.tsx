@@ -24,7 +24,7 @@ const PageContainer: React.FC<PageContainerProps> = ({ alternative, children, ti
                     <h2 className="text-secondary-100 max-w-7xl">{title}</h2>
                 </div>
             )}
-            <div className="page__content grow shrink basis-0 min-h-0 w-full p-4 flex justify-center overflow-auto">{children}</div>
+            <div className="page__content grow shrink basis-0 min-h-0 w-full flex justify-center overflow-auto">{children}</div>
         </div>
     );
 };
