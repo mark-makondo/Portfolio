@@ -29,7 +29,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(({ beforeIco
 
 export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(({ beforeIcon, placeholder, className, ...props }, ref) => (
     <label className={clsx("floating-label textarea w-full", className)}>
-        <textarea {...props} ref={ref} placeholder={placeholder || " "} className="grow resize-none" maxLength={MAX_LONG_STR_LEN} />
+        <textarea {...props} ref={ref} placeholder={placeholder || " "} className="grow resize-none w-full h-full" maxLength={MAX_LONG_STR_LEN} />
         <span>{placeholder}</span>
         {beforeIcon}
     </label>
