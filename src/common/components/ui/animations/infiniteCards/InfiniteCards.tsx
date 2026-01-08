@@ -1,3 +1,4 @@
+import "./inifiniteCards.css";
 import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -142,6 +143,8 @@ const InfiniteCards: React.FC<InfiniteCardsProps> = ({ items = [], tiltIntensity
     return (
         <div className="infinite-cards flex flex-col w-full h-full items-center justify-center gap-8">
             <div ref={container} className="relative h-full w-full overflow-hidden bg-base-300 flex items-center justify-center rounded-3xl">
+                {/* The Floor Gradient */}
+                <div className="carousel-floor" />
                 {/* Drag Overlay */}
                 <div className="drag-proxy absolute inset-0 z-20 cursor-grab active:cursor-grabbing" />
 
@@ -152,6 +155,9 @@ const InfiniteCards: React.FC<InfiniteCardsProps> = ({ items = [], tiltIntensity
                             className="card-item absolute w-max h-max bg-primary rounded-2xl text-primary-content shadow-sm flex items-center justify-center overflow-hidden"
                         >
                             {item}
+
+                            {/* Shadow Effect */}
+                            <div className="card-shadow" />
                         </li>
                     ))}
                 </ul>
