@@ -11,7 +11,7 @@ const ContactPage: React.FC = () => {
                     <InputEmail placeholder="Email Address" name="email-address" />
                 </div>
                 <InputText placeholder="Subject" name="subject" />
-                <Textarea placeholder="Message" name="message" />
+                <Textarea placeholder="Message" name="message" className="min-h-50" />
                 <Button type="submit" className="btn-primary">
                     Send Message
                 </Button>
