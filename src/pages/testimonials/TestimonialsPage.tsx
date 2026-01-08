@@ -20,7 +20,7 @@ const TetimonialItem: React.FC<{ name: string; role: string; message: string }> 
                 </div>
                 <div className="testimonial-item__info flex flex-col w-full">
                     <span className="testimonial-item__name text-primary-700">{name}</span>
-                    <span className="testimonial-item__role">{role}</span>
+                    <span className="testimonial-item__role text-sm">{role}</span>
                 </div>
             </div>
         </Card>
