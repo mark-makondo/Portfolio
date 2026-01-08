@@ -1,4 +1,4 @@
-import { FlattenedTypes } from "@/types/common.types";
+import { FlattenedTypes } from "@/@types/common.types";
 
 /**
  * 1: Register a route here.

@@ -1,4 +1,4 @@
-import { IconProps } from "@/types/common.types";
+import { IconProps } from "@/@types/common.types";
 import Icon from "@images/reactIcons/FaChevronRight.svg?react";
 import clsx from "clsx";
 

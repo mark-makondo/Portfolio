@@ -3,7 +3,7 @@ import clsx from "clsx";
 import LogoIcon from "@icons/LogoIcon";
 import RouteLink from "@ui/navigation/RouteLink";
 import RouteService from "@/services/Route.service";
-import { LocationType } from "@/types/common.types";
+import { LocationType } from "@/@types/common.types";
 import menus from "./menus";
 import Socials from "../socials/Socials";
 import { useIsHomePath } from "@/common/hooks/useIsHome";

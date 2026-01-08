@@ -9,7 +9,7 @@ import {
     HttpMethodUpperCase,
     EndpointsConfig,
     MutationEndpoint
-} from "@/types/api.types";
+} from "@/@types/api.types";
 
 export const BASE_PATH_URI = appConfig.url.server;
 

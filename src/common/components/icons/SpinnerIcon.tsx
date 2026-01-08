@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { IconProps } from "@/types/common.types";
+import { IconProps } from "@/@types/common.types";
 import Icon from "@images/circle-hole.svg?react";
 
 const SpinnerIcon: React.FC<IconProps> = (props) => {

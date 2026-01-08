@@ -1,6 +1,6 @@
 import { type RoutePathsType, ROUTE_PATHS } from "@/router/registry";
 import { type RouteConfigType, ROUTES } from "@/router/RouteConfig";
-import { LocationType } from "@/types/common.types";
+import { LocationType } from "@/@types/common.types";
 
 export class RouteService {
     static isCurrentPathActive(
