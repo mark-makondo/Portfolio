@@ -13,5 +13,12 @@ export default {
         linkedin: import.meta.env.VITE_APP_LINKEDIN,
         whatsapp: import.meta.env.VITE_APP_PHONE_QA,
         resume: import.meta.env.VITE_APP_RESUME
+    },
+    api: {
+        email: {
+            serviceId: import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+            templateId: import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+            publicKey: import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        }
     }
 };
