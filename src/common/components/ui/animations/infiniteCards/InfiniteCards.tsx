@@ -110,7 +110,19 @@ const InfiniteCards: React.FC<InfiniteCardsProps> = ({ items = [], tiltIntensity
 
             // --- Tilt Interaction ---
             const onMouseMove = (e: MouseEvent) => {
-                if (window.innerWidth < 768) return;
+                if (window.innerWidth < 768) {
+                    // Make sure to reset rotation if we will disable tilt
+                    cards.forEach((card) => {
+                        gsap.to(card, {
+                            rotateX: 0,
+                            rotateY: 0,
+                            duration: 0.5,
+                            ease: "power2.out",
+                            overwrite: "auto"
+                        });
+                    });
+                    return;
+                }
                 cards.forEach((card) => {
                     const opacity = gsap.getProperty(card, "opacity") as number;
                     if (opacity > 0.1) {
