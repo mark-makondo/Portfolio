@@ -2,6 +2,7 @@ import { Outlet } from "react-router";
 import clsx from "clsx";
 import Navbar from "@/common/components/shared/navbar/Navbar";
 import { useIsHomePath } from "@/common/hooks/useIsHome";
+import Copyright from "@/common/components/shared/copyright/Copyright";
 
 interface PublicLayoutProps {
     isAdmin?: boolean;
@@ -9,6 +10,7 @@ interface PublicLayoutProps {
 
 const PublicLayout: React.FC<PublicLayoutProps> = () => {
     const isHome = useIsHomePath();
+
     return (
         <div className={clsx("public-layout public-layout--company w-full h-screen", isHome ? "bg-base-200" : "bg-base-300")}>
             <div className="container m-auto flex flex-col h-full relative">
@@ -26,9 +28,7 @@ const PublicLayout: React.FC<PublicLayoutProps> = () => {
                     </div>
                     <Outlet />
                 </div>
-                {!isHome && (
-                    <footer className="text-neutral-black-content label-sm text-center mb-4 ml-12">© 2026 Mark Makondo. All rights reserved.</footer>
-                )}
+                <Copyright className="text-neutral-black-content label-sm text-center mb-4 ml-12" hidden={isHome} />
             </div>
         </div>
     );
