@@ -7,9 +7,10 @@ interface PageContainerProps {
     title?: string;
     subtitle?: string;
     className?: string;
+    hiddenScroll?: boolean;
 }
 
-const PageContainer: React.FC<PageContainerProps> = ({ alternative, children, title, subtitle, className }) => {
+const PageContainer: React.FC<PageContainerProps> = ({ alternative, children, title, subtitle, className, hiddenScroll = false }) => {
     const pageContainerClassName = useMemo(() => {
         let str = className || "";
         if (alternative) str += " page--alternative";
@@ -24,7 +25,14 @@ const PageContainer: React.FC<PageContainerProps> = ({ alternative, children, ti
                     <h2 className="text-secondary-100 max-w-7xl">{title}</h2>
                 </div>
             )}
-            <div className="page__content grow shrink basis-0 min-h-0 w-full flex justify-center overflow-auto">{children}</div>
+            <div
+                className={clsx(
+                    "page__content grow shrink basis-0 min-h-0 w-full flex justify-center",
+                    hiddenScroll ? "overflow-hidden" : "overflow-auto"
+                )}
+            >
+                {children}
+            </div>
         </div>
     );
 };
