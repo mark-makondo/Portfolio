@@ -4,13 +4,11 @@ import { ROUTE_PATHS, RoutePathsType } from "./registry";
 
 import PublicLayout from "@/layouts/PublicLayout";
 
-// Lazy load pages for better performance
-const NotFoundPage = React.lazy(() => import("@/pages/fallback/NotFound404Page"));
-
-const HomePage = React.lazy(() => import("@/pages/home/HomePage"));
-const ProjectsPage = React.lazy(() => import("@/pages/projects/ProjectsPage"));
-const TestimonialsPage = React.lazy(() => import("@/pages/testimonials/TestimonialsPage"));
-const ContactPage = React.lazy(() => import("@/pages/contact/ContactPage"));
+import NotFoundPage from "@/pages/fallback/NotFound404Page";
+import HomePage from "@/pages/home/HomePage";
+import ProjectsPage from "@/pages/projects/ProjectsPage";
+import TestimonialsPage from "@/pages/testimonials/TestimonialsPage";
+import ContactPage from "@/pages/contact/ContactPage";
 
 export type RouteMeta = {
     icon?: React.JSX.Element;
@@ -35,7 +33,7 @@ export const ROUTES: RouteConfigType[] = [
         element: <PublicLayout />,
         children: [
             {
-                path: ROUTE_PATHS.HOME, 
+                path: ROUTE_PATHS.HOME,
                 element: <HomePage />
             },
             {
