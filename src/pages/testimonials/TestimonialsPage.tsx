@@ -62,7 +62,13 @@ const data = [
 
 const TestimonialsPage: React.FC = () => {
     return (
-        <PageContainer className="page-testimonials relative" subtitle="Testimonials" title="What people say working with me" alternative>
+        <PageContainer
+            className="page-testimonials relative"
+            subtitle="Testimonials"
+            title="What people say working with me"
+            alternative
+            hiddenScroll
+        >
             <InfiniteCards
                 items={data.map((item) => (
                     <TetimonialItem name={item.name} role={item.role} message={item.message} />
