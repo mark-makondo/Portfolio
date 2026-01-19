@@ -1,4 +1,52 @@
-.carousel-floor {
+.infinite-cards {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.infinite-cards .dummy {
+    height: 100vh;
+    width: 100%;
+    display: block;
+}
+
+.infinite-cards .infinite-cards-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.infinite-cards .cards {
+    position: absolute;
+    width: 20rem;
+    height: 18rem;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+}
+
+.infinite-cards .card-item {
+    /* Forces the browser to treat the card as a 3D layer permanently */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+
+    /* A transparent outline fixes jagged edges on monitors */
+    outline: 1px solid transparent;
+
+    /* Prevents the browser from trying to "optimize" text during motion */
+    -webkit-font-smoothing: antialiased;
+
+    /* Ensures the shape doesn't 'pop' when it stops moving */
+    will-change: transform, opacity;
+}
+
+.infinite-cards .infinite-cards__floor {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -10,7 +58,7 @@
     transform: rotateX(75deg);
 }
 
-.carousel-floor .card-shadow {
+.infinite-cards .infinite-cards__floor .card-shadow {
     position: absolute;
     width: 200px;
     height: 40px;

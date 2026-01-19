@@ -17,6 +17,7 @@ const InfiniteCards: React.FC<InfiniteCardsProps> = ({ items = [], tiltIntensity
     // Fill the gaps for small item counts
     const displayItems = items.length > 0 && items.length < 8 ? [...items, ...items, ...items].slice(0, 12) : items;
 
+    const parentRef = useRef<HTMLDivElement>(null);
     const container = useRef<HTMLDivElement>(null);
 
     useGSAP(
@@ -51,40 +52,56 @@ const InfiniteCards: React.FC<InfiniteCardsProps> = ({ items = [], tiltIntensity
                 offset: 0,
                 onUpdate() {
                     seamlessLoop.time(wrapTime(playhead.offset));
+                    // Expose the raw offset to the window so buttons can read it
+                    window.currentOffset = playhead.offset;
                 },
                 duration: 0.5,
                 ease: "power3",
                 paused: true
             });
 
+            const wrap = (iterationDelta: number, scrollTo: number) => {
+                iteration += iterationDelta;
+                trigger.scroll(scrollTo);
+                trigger.update();
+            };
+
             const trigger = ScrollTrigger.create({
                 start: 0,
                 onUpdate(self) {
-                    scrub.vars.offset = (iteration + self.progress) * seamlessLoop.duration();
-                    window.currentOffset = scrub.vars.offset as number;
-                    scrub.invalidate().restart();
+                    const scroll = self.scroll();
+                    // For infite scroll we reset back the scroll at the start when it ends
+                    if (scroll > self.end - 1) {
+                        wrap(1, 2);
+                    } else if (scroll < 1 && self.direction < 0) {
+                        wrap(-1, self.end - 2);
+                    } else {
+                        scrub.vars.offset = (iteration + self.progress) * seamlessLoop.duration();
+                        scrub.invalidate().restart();
+                    }
                 },
                 end: "+=3000",
                 pin: container.current
             });
 
             const scrollToOffset = (offset: number) => {
-                const dragInstance = Draggable.get(".drag-proxy");
-                if (dragInstance) dragInstance.disable();
+                const di = Draggable.get(".drag-proxy");
+                const snappedTime = snapTime(offset);
 
-                let snappedTime = snapTime(offset);
-                let progress = (snappedTime - seamlessLoop.duration() * iteration) / seamlessLoop.duration();
-                const scroll = gsap.utils.clamp(1, trigger.end - 1, gsap.utils.wrap(0, 1, progress) * trigger.end);
-
-                if (progress >= 1 || progress < 0) {
-                    iteration += Math.floor(progress);
-                    trigger.scroll(scroll);
-                    trigger.update();
-                } else {
-                    trigger.scroll(scroll);
-                }
-                gsap.delayedCall(0.6, () => {
-                    if (dragInstance) dragInstance.enable();
+                gsap.to(playhead, {
+                    offset: snappedTime,
+                    duration: 0.6,
+                    ease: "power3.out",
+                    onUpdate: () => {
+                        seamlessLoop.time(wrapTime(playhead.offset));
+                        window.currentOffset = playhead.offset;
+                    },
+                    onComplete: () => {
+                        if (di) {
+                            gsap.set(di.target, { x: 0 });
+                            di.update();
+                        }
+                    }
                 });
             };
 
@@ -92,23 +109,28 @@ const InfiniteCards: React.FC<InfiniteCardsProps> = ({ items = [], tiltIntensity
             window.scrollToOffset = scrollToOffset;
             window.itemSpacing = spacing;
 
-            // --- Draggable Setup ---
+            // Draggable Setup
             Draggable.create(".drag-proxy", {
                 type: "x",
                 trigger: container.current,
                 onPress() {
-                    this.vars.startOffset = scrub.vars.offset;
+                    // Grab the CURRENT offset (set by buttons or previous drags)
+                    this.vars.startOffset = playhead.offset;
+                    // Reset the proxy's delta so we don't get a "jump"
+                    gsap.set(this.target, { x: 0 });
+                    this.update();
                 },
                 onDrag() {
-                    scrub.vars.offset = (this.vars.startOffset as number) + (this.startX - this.x) * 0.001;
+                    // Use the relative movement (this.x) since the last onPress
+                    scrub.vars.offset = (this.vars.startOffset as number) + this.x * -0.002;
                     scrub.invalidate().restart();
                 },
                 onDragEnd() {
-                    scrollToOffset(scrub.vars.offset as number);
+                    scrollToOffset(playhead.offset);
                 }
             });
 
-            // --- Tilt Interaction ---
+            // Tilt Interaction
             const onMouseMove = (e: MouseEvent) => {
                 if (window.innerWidth < 768) {
                     // Make sure to reset rotation if we will disable tilt
@@ -138,44 +160,52 @@ const InfiniteCards: React.FC<InfiniteCardsProps> = ({ items = [], tiltIntensity
                 });
             };
 
+            const onScrollEnd = () => scrollToOffset(scrub.vars.offset as number);
+
+            ScrollTrigger.addEventListener("scrollEnd", onScrollEnd);
             window.addEventListener("mousemove", onMouseMove);
-            return () => window.removeEventListener("mousemove", onMouseMove);
+
+            return () => {
+                ScrollTrigger.removeEventListener("scrollEnd", onScrollEnd);
+                window.removeEventListener("mousemove", onMouseMove);
+                // Clean up window properties
+                delete (window as any).scrollToOffset;
+                delete (window as any).currentOffset;
+                delete (window as any).itemSpacing;
+            };
         },
         { scope: container }
     );
 
     const handleManualControl = (direction: "prev" | "next") => {
-        if (!window.scrollToOffset) return;
+        // Check if variables exist on window
+        if (typeof window.scrollToOffset !== "function" || window.currentOffset === undefined) return;
         const moveAmount = direction === "next" ? window.itemSpacing : -window.itemSpacing;
+        // Pass the new target offset to your existing function
         window.scrollToOffset(window.currentOffset + moveAmount);
     };
 
     if (!items.length) return null;
 
     return (
-        <div className="infinite-cards flex flex-col w-full h-full items-center justify-center gap-8">
-            <div ref={container} className="relative h-full w-full overflow-hidden bg-base-300 flex items-center justify-center rounded-3xl">
-                {/* The Floor Gradient */}
-                <div className="carousel-floor" />
-                {/* Drag Overlay */}
+        <div ref={parentRef} className="infinite-cards relative no-scrollbar">
+            <div ref={container} className="infinite-cards-container bg-base-300 flex items-center justify-center rounded-3xl">
+                <div className="infinite-cards__floor" />
                 <div className="drag-proxy absolute inset-0 z-20 cursor-grab active:cursor-grabbing" />
-
-                <ul className="cards relative w-full h-full flex items-center justify-center pointer-events-none">
+                <ul className="cards flex items-center justify-center">
                     {displayItems.map((item, i) => (
                         <li
                             key={i}
                             className="card-item absolute w-max h-max bg-primary rounded-2xl text-primary-content shadow-sm flex items-center justify-center overflow-hidden"
                         >
                             {item}
-
-                            {/* Shadow Effect */}
                             <div className="card-shadow" />
                         </li>
                     ))}
                 </ul>
             </div>
-
-            <div className="flex gap-6 z-30">
+            <span className="text-xxs opacity-30 mt-4 uppercase tracking-[0.2em] absolute left-0 right-0 bottom-0 text-center">Drag to Explore</span>
+            <div className="flex gap-6 z-30 absolute top-0 right-0">
                 <button
                     onClick={() => handleManualControl("prev")}
                     className="btn btn-circle btn-primary btn-outline shadow-md hover:bg-primary hover:text-white transition-all active:scale-90"
