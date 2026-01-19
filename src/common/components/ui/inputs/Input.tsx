@@ -45,7 +45,7 @@ export const InputToggle = React.forwardRef<HTMLInputElement, InputProps>((props
 });
 
 export const InputText = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-    return <Input {...props} ref={ref} type="text" autoComplete="text" maxLength={MAX_STR_LEN} />;
+    return <Input {...props} ref={ref} type="text" autoComplete={props.autoComplete || "text"} maxLength={MAX_STR_LEN} />;
 });
 
 export const InputUsername = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
@@ -55,7 +55,7 @@ export const InputUsername = React.forwardRef<HTMLInputElement, InputProps>((pro
             ref={ref}
             beforeIcon={<UserIcon className="h-4 w-4 opacity-70" />}
             placeholder="Username"
-            autoComplete="username"
+            autoComplete={props.autoComplete || "username"}
             maxLength={MAX_STR_LEN}
         />
     );
@@ -69,7 +69,7 @@ export const InputEmail = React.forwardRef<HTMLInputElement, InputProps>((props,
             type="email"
             beforeIcon={<UserIcon className="h-4 w-4 opacity-70" />}
             placeholder="Email"
-            autoComplete="email"
+            autoComplete={props.autoComplete || "email"}
             maxLength={MAX_STR_LEN}
         />
     );
