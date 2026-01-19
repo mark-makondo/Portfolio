@@ -37,13 +37,13 @@ const ContactPage: React.FC = () => {
 
     return (
         <PageContainer className="page-contact" subtitle="Get In Touch" title="Let's Connect and Build Something Amazing!" alternative>
-            <form ref={form} onSubmit={sendEmail} className="page-contant__form flex flex-col gap-4 w-full max-w-180">
+            <form ref={form} onSubmit={sendEmail} className="page-contant__form flex flex-col gap-4 w-full max-w-180 m-auto">
                 <div className="page-content__form__top flex gap-4">
-                    <InputText placeholder="Full Name" name="user_name" required />
-                    <InputEmail placeholder="Email Address" name="user_email" required />
+                    <InputText placeholder="Full Name" name="user_name" autoComplete="off" required />
+                    <InputEmail placeholder="Email Address" name="user_email" autoComplete="off" required />
                 </div>
-                <InputText placeholder="Subject" name="user_subject" required />
-                <Textarea placeholder="Message" name="message" className="min-h-50" required />
+                <InputText placeholder="Subject" name="user_subject" autoComplete="off" required />
+                <Textarea placeholder="Message" name="message" className="min-h-50" autoComplete="off" required />
                 <Button type="submit" className="btn-primary" isLoading={isSending}>
                     Send Message
                 </Button>
