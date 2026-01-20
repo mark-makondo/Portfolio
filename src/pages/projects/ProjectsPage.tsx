@@ -1,9 +1,33 @@
 import PageContainer from "@/common/components/shared/container/PageContainer";
+import Projects from "@/features/projects/components/Projects";
+
+const projects = [
+    {
+        id: "1",
+        title: "Project One",
+        imageUrl: "https://picsum.photos/800/600?random=1"
+    },
+    {
+        id: "2",
+        title: "Project Two",
+        imageUrl: "https://picsum.photos/800/600?random=2"
+    },
+    {
+        id: "3",
+        title: "Project Three",
+        imageUrl: "https://picsum.photos/800/600?random=3"
+    },
+    {
+        id: "4",
+        title: "Project Four",
+        imageUrl: "https://picsum.photos/800/600?random=4"
+    }
+];
 
 const ProjectsPage: React.FC = () => {
     return (
         <PageContainer className="page-projects" subtitle="My Works" title="Featured Projects" alternative>
-            <div className="page-projects__content grow shrink basis-0 min-h-0 w-full gap-4 justify-between"></div>
+            <Projects data={projects} />
         </PageContainer>
     );
 };
