@@ -21,6 +21,11 @@ const projects = [
         id: "4",
         title: "Project Four",
         imageUrl: "https://picsum.photos/800/600?random=4"
+    },
+    {
+        id: "5",
+        title: "Project Five",
+        imageUrl: "https://picsum.photos/800/600?random=5"
     }
 ];
 
