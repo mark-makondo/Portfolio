@@ -18,7 +18,7 @@ const PageContainer: React.FC<PageContainerProps> = ({ alternative, children, ti
     }, [className, alternative]);
 
     return (
-        <div className={clsx("page flex flex-col h-full w-full gap-10 p-2", pageContainerClassName)}>
+        <div className={clsx("page flex flex-col h-full w-full gap-10 pr-4", pageContainerClassName)}>
             {title && (
                 <div className="page__title text-center">
                     {subtitle && <span className="text-lg text-primary-300 font-bold!">{subtitle}</span>}
