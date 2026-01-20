@@ -18,7 +18,6 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ title, imageUrl }) => {
 
     const { containerRef: scrollRef } = usePageContext();
 
-
     useGSAP(
         () => {
             if (!containerRef?.current) return;
@@ -53,29 +52,48 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ title, imageUrl }) => {
 
     useGSAP(
         () => {
-            if (!containerRef?.current || !imageRef.current || !textRef.current) return;
+            if (!containerRef.current || !imageRef.current || !textRef.current) return;
 
             const container = containerRef.current;
             const image = imageRef.current;
             const text = textRef.current;
 
+            // Magnetic movement (whole card)
+            const moveCardX = gsap.quickTo(container, "x", { duration: 0.6, ease: "power3.out" });
+            const moveCardY = gsap.quickTo(container, "y", { duration: 0.6, ease: "power3.out" });
+
+            // Parallax layers
             const moveImageX = gsap.quickTo(image, "x", { duration: 0.6, ease: "power3.out" });
             const moveImageY = gsap.quickTo(image, "y", { duration: 0.6, ease: "power3.out" });
+
+            const moveTextX = gsap.quickTo(text, "x", { duration: 0.5, ease: "power3.out" });
             const moveTextY = gsap.quickTo(text, "y", { duration: 0.5, ease: "power3.out" });
 
             const handleMouseMove = (e: MouseEvent) => {
                 const rect = container.getBoundingClientRect();
+
                 const x = (e.clientX - rect.left) / rect.width - 0.5;
                 const y = (e.clientY - rect.top) / rect.height - 0.5;
 
-                moveImageX(x * 20);
-                moveImageY(y * 20);
+                // Magnetic card
+                moveCardX(x * 12);
+                moveCardY(y * 12);
+
+                // Image parallax
+                moveImageX(x * 24);
+                moveImageY(y * 24);
+
+                // Text floats opposite for depth
+                moveTextX(x * -8);
                 moveTextY(y * -10);
             };
 
             const handleMouseLeave = () => {
+                moveCardX(0);
+                moveCardY(0);
                 moveImageX(0);
                 moveImageY(0);
+                moveTextX(0);
                 moveTextY(0);
             };
 
@@ -91,7 +109,15 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ title, imageUrl }) => {
     );
 
     return (
-        <div ref={containerRef} className="relative w-full aspect-4/3 rounded-2xl overflow-hidden cursor-pointer shadow-xl will-change-transform">
+        <div
+            ref={containerRef}
+            className=" 
+    relative w-full aspect-4/3 rounded-2xl overflow-hidden
+    cursor-pointer shadow-xl
+    will-change-transform
+    transition-shadow
+    hover:shadow-2xl"
+        >
             {/* Image */}
             <div
                 ref={imageRef}

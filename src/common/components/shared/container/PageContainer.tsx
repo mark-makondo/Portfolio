@@ -42,8 +42,8 @@ const PageContainer = forwardRef<HTMLDivElement, PageContainerProps>(
                     <div
                         ref={internalRef}
                         className={clsx(
-                            "page__content grow shrink basis-0 min-h-0 w-full flex justify-center",
-                            hiddenScroll ? "overflow-hidden" : "overflow-auto"
+                            "page__content grow shrink basis-0 min-h-0 w-full flex justify-center overflow-x-hidden",
+                            hiddenScroll ? "overflow-hidden" : "overflow-y-auto"
                         )}
                     >
                         {internalRef.current && children}
