@@ -14,7 +14,12 @@ const Home: React.FC = () => {
 
     return (
         <div className="page page-home flex flex-col justify-between gap-20 h-full w-full min-w-0">
-            <img className="portrait absolute bottom-0 w-[50%] -right-24 max-w-140 hidden xlg:block" src="/images/portrait.webp" alt="mark-makondo" />
+            <img
+                className="portrait absolute bottom-0 w-[50%] -right-24 max-w-140 hidden xlg:block"
+                src="/images/portrait.webp"
+                alt="mark-makondo"
+                loading="lazy"
+            />
 
             <div className="page-home__status flex gap-2 w-full mt-0 flex-wrap">
                 <Tag type={appConfig.isAvailableForWork ? TYPES.AVAILABLE_FOR_WORK : TYPES.NOT_AVAILABLE_FOR_WORK} />
