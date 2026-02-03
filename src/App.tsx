@@ -6,6 +6,12 @@ import { Projects } from "@/components/sections/Projects";
 import { TechStack } from "@/components/sections/TechStack";
 import { Testimonials } from "@/components/sections/Testimonials";
 
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
+
 function App() {
   return (
     <div className="bg-background min-h-screen font-sans text-slate-400 selection:bg-primary/20 selection:text-primary">
